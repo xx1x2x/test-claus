@@ -1,987 +1,1342 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Гарри Поттер: Секреты Дамблдора — Бронирование</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Гарри Поттер: Секреты Дамблдора — Бронирование</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-<!-- jsQR для распознавания QR из фото -->
-<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <!-- jsQR для распознавания QR из фото -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap");
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-:root {
-  --bg:            #0d0a14;
-  --surface:       #151020;
-  --card:          #1c1530;
-  --card2:         #231a3d;
-  --gold:          #c9a84c;
-  --gold-light:    #e8c96b;
-  --gold-dim:      rgba(201,168,76,0.15);
-  --purple:        #6b3fa0;
-  --purple-light:  #9b5fe8;
-  --purple-dim:    rgba(107,63,160,0.2);
-  --text:          #ede8f8;
-  --text2:         #a89ec0;
-  --border:        rgba(201,168,76,0.18);
-  --border2:       rgba(155,95,232,0.2);
-  --success:       #3ecf8e;
-  --error:         #e8605e;
-  --radius:        14px;
-}
+      :root {
+        --bg: #0d0a14;
+        --surface: #151020;
+        --card: #1c1530;
+        --card2: #231a3d;
+        --gold: #c9a84c;
+        --gold-light: #e8c96b;
+        --gold-dim: rgba(201, 168, 76, 0.15);
+        --purple: #6b3fa0;
+        --purple-light: #9b5fe8;
+        --purple-dim: rgba(107, 63, 160, 0.2);
+        --text: #ede8f8;
+        --text2: #a89ec0;
+        --border: rgba(201, 168, 76, 0.18);
+        --border2: rgba(155, 95, 232, 0.2);
+        --success: #3ecf8e;
+        --error: #e8605e;
+        --radius: 14px;
+      }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
 
-/* ── Stars ── */
-body::before {
-  content: '';
-  position: fixed; inset: 0; pointer-events: none; z-index: 0;
-  background:
-    radial-gradient(1px 1px at 8%  12%, rgba(255,255,255,.55) 0%, transparent 100%),
-    radial-gradient(1px 1px at 22% 58%, rgba(255,255,255,.30) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 40% 25%, rgba(255,255,255,.45) 0%, transparent 100%),
-    radial-gradient(1px 1px at 60% 75%, rgba(255,255,255,.35) 0%, transparent 100%),
-    radial-gradient(1px 1px at 78% 18%, rgba(255,255,255,.50) 0%, transparent 100%),
-    radial-gradient(1px 1px at 88% 62%, rgba(255,255,255,.25) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 15% 88%, rgba(255,255,255,.40) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 45%, rgba(255,255,255,.20) 0%, transparent 100%),
-    radial-gradient(1px 1px at 92% 40%, rgba(255,255,255,.45) 0%, transparent 100%),
-    radial-gradient(1px 1px at 35% 92%, rgba(255,255,255,.30) 0%, transparent 100%);
-}
+      /* ── Stars ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(
+            1px 1px at 8% 12%,
+            rgba(255, 255, 255, 0.55) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1px 1px at 22% 58%,
+            rgba(255, 255, 255, 0.3) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1.5px 1.5px at 40% 25%,
+            rgba(255, 255, 255, 0.45) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1px 1px at 60% 75%,
+            rgba(255, 255, 255, 0.35) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1px 1px at 78% 18%,
+            rgba(255, 255, 255, 0.5) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1px 1px at 88% 62%,
+            rgba(255, 255, 255, 0.25) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1.5px 1.5px at 15% 88%,
+            rgba(255, 255, 255, 0.4) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1px 1px at 50% 45%,
+            rgba(255, 255, 255, 0.2) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1px 1px at 92% 40%,
+            rgba(255, 255, 255, 0.45) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1px 1px at 35% 92%,
+            rgba(255, 255, 255, 0.3) 0%,
+            transparent 100%
+          );
+      }
 
-/* ── Layout ── */
-.page {
-  position: relative; z-index: 1;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 32px 20px 60px;
-}
+      /* ── Layout ── */
+      .page {
+        position: relative;
+        z-index: 1;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 20px 60px;
+      }
 
-/* ── Hero ── */
-.hero {
-  text-align: center;
-  padding: 48px 20px 40px;
-  margin-bottom: 40px;
-  position: relative;
-}
+      /* ── Hero ── */
+      .hero {
+        text-align: center;
+        padding: 48px 20px 40px;
+        margin-bottom: 40px;
+        position: relative;
+      }
 
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 280px; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 280px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
 
-.hero-eyebrow {
-  font-size: 11px;
-  letter-spacing: 3.5px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 14px;
-  font-weight: 600;
-}
+      .hero-eyebrow {
+        font-size: 11px;
+        letter-spacing: 3.5px;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        font-weight: 600;
+      }
 
-.hero-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(26px, 5vw, 42px);
-  font-weight: 900;
-  line-height: 1.15;
-  margin-bottom: 10px;
-  background: linear-gradient(135deg, #fff 30%, var(--gold-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+      .hero-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(26px, 5vw, 42px);
+        font-weight: 900;
+        line-height: 1.15;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #fff 30%, var(--gold-light));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
 
-.hero-sub {
-  font-size: 14px;
-  color: var(--text2);
-  margin-bottom: 24px;
-}
+      .hero-sub {
+        font-size: 14px;
+        color: var(--text2);
+        margin-bottom: 24px;
+      }
 
-.hero-tags {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+      .hero-tags {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
 
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  font-weight: 500;
-  padding: 5px 12px;
-  border-radius: 20px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  color: var(--text2);
-}
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 5px 12px;
+        border-radius: 20px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        color: var(--text2);
+      }
 
-/* ── Tabs ── */
-.tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 4px;
-  margin-bottom: 32px;
-  gap: 3px;
-}
+      /* ── Tabs ── */
+      .tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 4px;
+        margin-bottom: 32px;
+        gap: 3px;
+      }
 
-.tab-btn {
-  padding: 11px 10px;
-  background: transparent;
-  border: none;
-  border-radius: 11px;
-  color: var(--text2);
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .2s;
-  letter-spacing: .2px;
-}
+      .tab-btn {
+        padding: 11px 10px;
+        background: transparent;
+        border: none;
+        border-radius: 11px;
+        color: var(--text2);
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        letter-spacing: 0.2px;
+      }
 
-.tab-btn.active {
-  background: var(--card2);
-  color: var(--gold);
-  box-shadow: 0 2px 12px rgba(107,63,160,.25);
-}
+      .tab-btn.active {
+        background: var(--card2);
+        color: var(--gold);
+        box-shadow: 0 2px 12px rgba(107, 63, 160, 0.25);
+      }
 
-.tab-pane { display: none; }
-.tab-pane.active { display: block; }
+      .tab-pane {
+        display: none;
+      }
+      .tab-pane.active {
+        display: block;
+      }
 
-/* ── Card ── */
-.card {
-  background: linear-gradient(160deg, var(--card), var(--card2));
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px 28px;
-  position: relative;
-  overflow: hidden;
-}
+      /* ── Card ── */
+      .card {
+        background: linear-gradient(160deg, var(--card), var(--card2));
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 32px 28px;
+        position: relative;
+        overflow: hidden;
+      }
 
-.card::before {
-  content: '';
-  position: absolute;
-  top: -80px; right: -80px;
-  width: 220px; height: 220px;
-  background: radial-gradient(circle, rgba(107,63,160,.25) 0%, transparent 70%);
-  pointer-events: none;
-}
+      .card::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(
+          circle,
+          rgba(107, 63, 160, 0.25) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
 
-.card + .card { margin-top: 16px; }
+      .card + .card {
+        margin-top: 16px;
+      }
 
-/* ── Section label ── */
-.s-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
+      /* ── Section label ── */
+      .s-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
 
-/* ── Form fields ── */
-.field { margin-bottom: 16px; }
-.field-l {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text2);
-  margin-bottom: 7px;
-  letter-spacing: .3px;
-}
+      /* ── Form fields ── */
+      .field {
+        margin-bottom: 16px;
+      }
+      .field-l {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text2);
+        margin-bottom: 7px;
+        letter-spacing: 0.3px;
+      }
 
-.field-i {
-  width: 100%;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 11px 14px;
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  outline: none;
-  transition: border-color .2s, box-shadow .2s;
-  -webkit-appearance: none;
-}
+      .field-i {
+        width: 100%;
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        padding: 11px 14px;
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
 
-.field-i:focus {
-  border-color: var(--purple-light);
-  box-shadow: 0 0 0 3px rgba(155,95,232,.12);
-}
+      .field-i:focus {
+        border-color: var(--purple-light);
+        box-shadow: 0 0 0 3px rgba(155, 95, 232, 0.12);
+      }
 
-.field-i::placeholder { color: var(--text2); opacity: .5; }
+      .field-i::placeholder {
+        color: var(--text2);
+        opacity: 0.5;
+      }
 
-select.field-i {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a7ea0' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 36px;
-  cursor: pointer;
-}
+      select.field-i {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a7ea0' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        padding-right: 36px;
+        cursor: pointer;
+      }
 
-.grid2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
 
-@media (max-width: 520px) { .grid2 { grid-template-columns: 1fr; } }
+      @media (max-width: 520px) {
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+      }
 
-/* ── Promo row ── */
-.promo-row {
-  display: flex;
-  gap: 10px;
-  align-items: flex-end;
-}
-.promo-row .field { flex: 1; margin-bottom: 0; }
+      /* ── Promo row ── */
+      .promo-row {
+        display: flex;
+        gap: 10px;
+        align-items: flex-end;
+      }
+      .promo-row .field {
+        flex: 1;
+        margin-bottom: 0;
+      }
 
-/* ── Status messages ── */
-.status-msg {
-  display: none;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 10px 14px;
-  border-radius: 9px;
-  margin-top: 10px;
-}
-.status-msg.ok {
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(62,207,142,.1);
-  border: 1px solid rgba(62,207,142,.3);
-  color: var(--success);
-}
-.status-msg.fail {
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(232,96,94,.1);
-  border: 1px solid rgba(232,96,94,.3);
-  color: var(--error);
-}
-.status-msg.loading {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--purple-dim);
-  border: 1px solid var(--border2);
-  color: var(--text2);
-}
+      /* ── Status messages ── */
+      .status-msg {
+        display: none;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 10px 14px;
+        border-radius: 9px;
+        margin-top: 10px;
+      }
+      .status-msg.ok {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(62, 207, 142, 0.1);
+        border: 1px solid rgba(62, 207, 142, 0.3);
+        color: var(--success);
+      }
+      .status-msg.fail {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(232, 96, 94, 0.1);
+        border: 1px solid rgba(232, 96, 94, 0.3);
+        color: var(--error);
+      }
+      .status-msg.loading {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--purple-dim);
+        border: 1px solid var(--border2);
+        color: var(--text2);
+      }
 
-/* ── Divider ── */
-.divider {
-  display: flex; align-items: center; gap: 12px;
-  margin: 20px 0;
-  color: var(--text2);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-.divider::before, .divider::after {
-  content: ''; flex: 1; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-}
+      /* ── Divider ── */
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0;
+        color: var(--text2);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border),
+          transparent
+        );
+      }
 
-/* ── QR drop zone ── */
-.qr-zone {
-  background: var(--surface);
-  border: 2px dashed var(--border);
-  border-radius: 12px;
-  padding: 24px 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all .2s;
-}
-.qr-zone:hover { border-color: var(--purple-light); background: var(--purple-dim); }
-.qr-zone-icon { font-size: 30px; margin-bottom: 8px; }
-.qr-zone-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
-.qr-zone-hint { font-size: 11px; color: var(--text2); opacity: .6; margin-top: 4px; }
+      /* ── QR drop zone ── */
+      .qr-zone {
+        background: var(--surface);
+        border: 2px dashed var(--border);
+        border-radius: 12px;
+        padding: 24px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .qr-zone:hover {
+        border-color: var(--purple-light);
+        background: var(--purple-dim);
+      }
+      .qr-zone-icon {
+        font-size: 30px;
+        margin-bottom: 8px;
+      }
+      .qr-zone-text {
+        font-size: 13px;
+        color: var(--text2);
+        line-height: 1.5;
+      }
+      .qr-zone-hint {
+        font-size: 11px;
+        color: var(--text2);
+        opacity: 0.6;
+        margin-top: 4px;
+      }
 
-.qr-success {
-  display: none;
-  align-items: center; gap: 12px;
-  background: rgba(62,207,142,.08);
-  border: 1px solid rgba(62,207,142,.25);
-  border-radius: 10px;
-  padding: 12px 16px;
-  margin-top: 10px;
-}
-.qr-success.show { display: flex; }
-.qr-success-text { font-size: 13px; color: var(--success); font-weight: 500; }
-.qr-remove { margin-left: auto; background: none; border: none; color: var(--text2); cursor: pointer; font-size: 20px; line-height: 1; padding: 0 4px; }
-.qr-remove:hover { color: var(--error); }
+      .qr-success {
+        display: none;
+        align-items: center;
+        gap: 12px;
+        background: rgba(62, 207, 142, 0.08);
+        border: 1px solid rgba(62, 207, 142, 0.25);
+        border-radius: 10px;
+        padding: 12px 16px;
+        margin-top: 10px;
+      }
+      .qr-success.show {
+        display: flex;
+      }
+      .qr-success-text {
+        font-size: 13px;
+        color: var(--success);
+        font-weight: 500;
+      }
+      .qr-remove {
+        margin-left: auto;
+        background: none;
+        border: none;
+        color: var(--text2);
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 1;
+        padding: 0 4px;
+      }
+      .qr-remove:hover {
+        color: var(--error);
+      }
 
-/* ── Price block ── */
-.price-block {
-  display: flex; justify-content: space-between; align-items: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 20px;
-  margin: 24px 0 20px;
-}
-.price-meta { display: flex; flex-direction: column; gap: 3px; }
-.price-meta-label { font-size: 12px; color: var(--text2); }
-.price-discount-badge {
-  display: none;
-  font-size: 11px; font-weight: 700;
-  color: var(--success);
-  background: rgba(62,207,142,.12);
-  border: 1px solid rgba(62,207,142,.25);
-  padding: 2px 8px; border-radius: 20px;
-  width: fit-content;
-}
-.price-nums { text-align: right; }
-.price-original {
-  display: none;
-  font-size: 13px; color: var(--text2);
-  text-decoration: line-through;
-}
-.price-final {
-  font-family: 'Cinzel', serif;
-  font-size: 26px; font-weight: 700;
-  color: var(--gold);
-  line-height: 1;
-}
+      /* ── Price block ── */
+      .price-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin: 24px 0 20px;
+      }
+      .price-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .price-meta-label {
+        font-size: 12px;
+        color: var(--text2);
+      }
+      .price-discount-badge {
+        display: none;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--success);
+        background: rgba(62, 207, 142, 0.12);
+        border: 1px solid rgba(62, 207, 142, 0.25);
+        padding: 2px 8px;
+        border-radius: 20px;
+        width: fit-content;
+      }
+      .price-nums {
+        text-align: right;
+      }
+      .price-original {
+        display: none;
+        font-size: 13px;
+        color: var(--text2);
+        text-decoration: line-through;
+      }
+      .price-final {
+        font-family: "Cinzel", serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+      }
 
-/* ── Buttons ── */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  border: none; border-radius: 10px; cursor: pointer;
-  font-family: 'Inter', sans-serif; font-weight: 600;
-  transition: all .2s; text-decoration: none;
-}
-.btn-sm { padding: 10px 16px; font-size: 13px; }
-.btn-md { padding: 12px 20px; font-size: 14px; }
-.btn-full { width: 100%; padding: 15px; font-size: 15px; border-radius: 12px; }
+      /* ── Buttons ── */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+      .btn-sm {
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+      .btn-md {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+      .btn-full {
+        width: 100%;
+        padding: 15px;
+        font-size: 15px;
+        border-radius: 12px;
+      }
 
-.btn-gold {
-  background: linear-gradient(135deg, var(--gold), #a07830);
-  color: #0d0a14;
-}
-.btn-gold:hover { transform: translateY(-1px); box-shadow: 0 5px 18px rgba(201,168,76,.35); }
+      .btn-gold {
+        background: linear-gradient(135deg, var(--gold), #a07830);
+        color: #0d0a14;
+      }
+      .btn-gold:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 18px rgba(201, 168, 76, 0.35);
+      }
 
-.btn-outline {
-  background: transparent;
-  border: 1.5px solid var(--border);
-  color: var(--text2);
-}
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+      .btn-outline {
+        background: transparent;
+        border: 1.5px solid var(--border);
+        color: var(--text2);
+      }
+      .btn-outline:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
 
-.btn-purple {
-  background: linear-gradient(135deg, #7b4fba, #4a2a80);
-  color: #fff;
-  box-shadow: 0 4px 18px rgba(107,63,160,.35);
-}
-.btn-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(107,63,160,.5); }
-.btn-purple:disabled { opacity: .5; transform: none; cursor: not-allowed; }
+      .btn-purple {
+        background: linear-gradient(135deg, #7b4fba, #4a2a80);
+        color: #fff;
+        box-shadow: 0 4px 18px rgba(107, 63, 160, 0.35);
+      }
+      .btn-purple:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(107, 63, 160, 0.5);
+      }
+      .btn-purple:disabled {
+        opacity: 0.5;
+        transform: none;
+        cursor: not-allowed;
+      }
 
-/* ── Invite preview ── */
-.invite-preview {
-  background: linear-gradient(155deg, #1e1538, #2d1f54);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 40px 28px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-.invite-preview::before {
-  content: '';
-  position: absolute; top: -60px; right: -60px;
-  width: 180px; height: 180px;
-  background: radial-gradient(circle, rgba(107,63,160,.35) 0%, transparent 70%);
-  pointer-events: none;
-}
-.invite-preview::after {
-  content: '';
-  position: absolute; bottom: -40px; left: -40px;
-  width: 140px; height: 140px;
-  background: radial-gradient(circle, rgba(201,168,76,.12) 0%, transparent 70%);
-  pointer-events: none;
-}
+      /* ── Invite preview ── */
+      .invite-preview {
+        background: linear-gradient(155deg, #1e1538, #2d1f54);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 40px 28px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+      .invite-preview::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 180px;
+        height: 180px;
+        background: radial-gradient(
+          circle,
+          rgba(107, 63, 160, 0.35) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .invite-preview::after {
+        content: "";
+        position: absolute;
+        bottom: -40px;
+        left: -40px;
+        width: 140px;
+        height: 140px;
+        background: radial-gradient(
+          circle,
+          rgba(201, 168, 76, 0.12) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
 
-.inv-eyebrow {
-  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--gold); opacity: .8; margin-bottom: 6px; font-weight: 600;
-}
-.inv-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(18px, 4vw, 24px);
-  font-weight: 900; line-height: 1.2;
-  margin-bottom: 4px;
-}
-.inv-sub {
-  font-family: 'Cinzel', serif;
-  font-size: 12px; color: var(--gold-light);
-  margin-bottom: 28px; font-weight: 400;
-}
+      .inv-eyebrow {
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.8;
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      .inv-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(18px, 4vw, 24px);
+        font-weight: 900;
+        line-height: 1.2;
+        margin-bottom: 4px;
+      }
+      .inv-sub {
+        font-family: "Cinzel", serif;
+        font-size: 12px;
+        color: var(--gold-light);
+        margin-bottom: 28px;
+        font-weight: 400;
+      }
 
-#qr-display {
-  display: inline-block;
-  background: #fff;
-  padding: 14px; border-radius: 12px;
-  margin-bottom: 22px;
-  box-shadow: 0 0 35px rgba(155,95,232,.4), 0 0 70px rgba(201,168,76,.12);
-}
-#qr-display canvas, #qr-display img { display: block; }
+      #qr-display {
+        display: inline-block;
+        background: #fff;
+        padding: 14px;
+        border-radius: 12px;
+        margin-bottom: 22px;
+        box-shadow:
+          0 0 35px rgba(155, 95, 232, 0.4),
+          0 0 70px rgba(201, 168, 76, 0.12);
+      }
+      #qr-display canvas,
+      #qr-display img {
+        display: block;
+      }
 
-.inv-code-box {
-  display: inline-flex; align-items: center; gap: 12px;
-  background: var(--gold-dim);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin-bottom: 14px;
-}
-.inv-code-label { font-size: 10px; color: var(--text2); letter-spacing: 1px; text-transform: uppercase; }
-.inv-code-val {
-  font-family: 'Cinzel', serif;
-  font-size: 20px; font-weight: 700;
-  color: var(--gold); letter-spacing: 4px;
-}
+      .inv-code-box {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--gold-dim);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-bottom: 14px;
+      }
+      .inv-code-label {
+        font-size: 10px;
+        color: var(--text2);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .inv-code-val {
+        font-family: "Cinzel", serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--gold);
+        letter-spacing: 4px;
+      }
 
-.inv-discount {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--purple), #4a2a80);
-  color: #fff;
-  font-family: 'Cinzel', serif;
-  font-size: 12px; font-weight: 700;
-  padding: 5px 16px; border-radius: 20px;
-  margin-bottom: 28px;
-  box-shadow: 0 3px 12px rgba(107,63,160,.4);
-}
+      .inv-discount {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--purple), #4a2a80);
+        color: #fff;
+        font-family: "Cinzel", serif;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 5px 16px;
+        border-radius: 20px;
+        margin-bottom: 28px;
+        box-shadow: 0 3px 12px rgba(107, 63, 160, 0.4);
+      }
 
-.inv-actions {
-  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-}
+      .inv-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
 
-/* ── Generator form ── */
-.gen-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px 20px;
-}
+      /* ── Generator form ── */
+      .gen-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px 20px;
+      }
 
-/* ── Toast ── */
-.toast {
-  position: fixed; bottom: 24px; left: 50%;
-  transform: translateX(-50%) translateY(80px);
-  background: var(--card2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 22px;
-  font-size: 14px; font-weight: 500;
-  color: var(--text);
-  box-shadow: 0 8px 30px rgba(0,0,0,.5);
-  transition: transform .28s cubic-bezier(.34,1.56,.64,1);
-  z-index: 999; white-space: nowrap;
-  pointer-events: none;
-}
-.toast.show { transform: translateX(-50%) translateY(0); }
+      /* ── Toast ── */
+      .toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: var(--card2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 22px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 999;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+      }
 
-/* ── Spinner ── */
-@keyframes spin { to { transform: rotate(360deg); } }
-.spinner {
-  width: 14px; height: 14px;
-  border: 2px solid rgba(255,255,255,.2);
-  border-top-color: currentColor;
-  border-radius: 50%;
-  animation: spin .6s linear infinite;
-  flex-shrink: 0;
-}
+      /* ── Spinner ── */
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .spinner {
+        width: 14px;
+        height: 14px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        flex-shrink: 0;
+      }
 
-/* ── API setup notice ── */
-.api-notice {
-  background: rgba(201,168,76,.07);
-  border: 1px solid rgba(201,168,76,.2);
-  border-radius: 10px;
-  padding: 12px 16px;
-  font-size: 12px;
-  color: var(--text2);
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
-.api-notice strong { color: var(--gold); }
-.api-notice a { color: var(--gold); }
-</style>
-</head>
-<body>
-<div class="page">
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-eyebrow">Клаустрофобия · Минск</div>
-    <div class="hero-title">Гарри Поттер:<br>Секреты Дамблдора</div>
-    <div class="hero-sub">Детский квест · ул. Куйбышева, 22</div>
-    <div class="hero-tags">
-      <span class="tag">👥 2–5 игроков</span>
-      <span class="tag">⏱ 60 минут</span>
-      <span class="tag">🎂 6–12 лет</span>
-      <span class="tag">📍 1 этаж</span>
-    </div>
-  </div>
-
-  <!-- TABS -->
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('booking', this)">🔮 Забронировать</button>
-    <button class="tab-btn" onclick="switchTab('invite', this)">🎟 Создать приглашение</button>
-  </div>
-
-  <!-- ════════ TAB: BOOKING ════════ -->
-  <div id="tab-booking" class="tab-pane active">
-
-    <div class="card">
-      <div class="s-label">📋 Данные для записи</div>
-
-      <div class="grid2">
-        <div class="field">
-          <label class="field-l">Имя</label>
-          <input class="field-i" id="b-name" placeholder="Ваше имя">
-        </div>
-        <div class="field">
-          <label class="field-l">Телефон</label>
-          <input class="field-i" id="b-phone" type="tel" placeholder="+375 XX XXX XX XX">
+      /* ── API setup notice ── */
+      .api-notice {
+        background: rgba(201, 168, 76, 0.07);
+        border: 1px solid rgba(201, 168, 76, 0.2);
+        border-radius: 10px;
+        padding: 12px 16px;
+        font-size: 12px;
+        color: var(--text2);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+      .api-notice strong {
+        color: var(--gold);
+      }
+      .api-notice a {
+        color: var(--gold);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-eyebrow">Клаустрофобия · Минск</div>
+        <div class="hero-title">Гарри Поттер:<br />Секреты Дамблдора</div>
+        <div class="hero-sub">Детский квест · ул. Куйбышева, 22</div>
+        <div class="hero-tags">
+          <span class="tag">👥 2–5 игроков</span>
+          <span class="tag">⏱ 60 минут</span>
+          <span class="tag">🎂 6–12 лет</span>
+          <span class="tag">📍 1 этаж</span>
         </div>
       </div>
 
-      <div class="field">
-        <label class="field-l">Количество игроков</label>
-        <select class="field-i" id="b-players" onchange="recalc()">
-          <option value="2">2 игрока</option>
-          <option value="3" selected>3 игрока</option>
-          <option value="4">4 игрока</option>
-          <option value="5">5 игроков (+25 BYN)</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="s-label">🎫 Промо-код или QR</div>
-
-      <!-- API notice: replace URL -->
-      <div class="api-notice" id="api-notice">
-        ⚙️ <strong>Настройка:</strong> укажи URL своего Google Apps Script в переменной <code>API_URL</code> в коде страницы. <a href="#" onclick="document.getElementById('api-notice').style.display='none';return false">Скрыть</a>
-      </div>
-
-      <!-- PROMO CODE -->
-      <label class="field-l">Введите промо-код</label>
-      <div class="promo-row">
-        <div class="field">
-          <input class="field-i" id="b-promo" placeholder="Например HP2026"
-            oninput="onPromoInput()"
-            onkeydown="if(event.key==='Enter') applyPromo()">
-        </div>
-        <button class="btn btn-outline btn-sm" onclick="applyPromo()" id="btn-apply">
-          Применить
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('booking', this)">
+          🔮 Забронировать
+        </button>
+        <button class="tab-btn" onclick="switchTab('invite', this)">
+          🎟 Создать приглашение
         </button>
       </div>
-      <div class="status-msg" id="promo-status"></div>
 
-      <div class="divider">или</div>
+      <!-- ════════ TAB: BOOKING ════════ -->
+      <div id="tab-booking" class="tab-pane active">
+        <div class="card">
+          <div class="s-label">📋 Данные для записи</div>
 
-      <!-- QR UPLOAD -->
-      <label class="field-l">Прикрепить QR из приглашения</label>
-      <div class="qr-zone" id="qr-zone" onclick="document.getElementById('qr-file').click()">
-        <div class="qr-zone-icon">📷</div>
-        <div class="qr-zone-text">Нажмите, чтобы загрузить QR из галереи</div>
-        <div class="qr-zone-hint">PNG, JPG · будет автоматически распознан</div>
-        <input type="file" id="qr-file" accept="image/*" style="display:none" onchange="handleQR(event)">
+          <div class="grid2">
+            <div class="field">
+              <label class="field-l">Имя</label>
+              <input class="field-i" id="b-name" placeholder="Ваше имя" />
+            </div>
+            <div class="field">
+              <label class="field-l">Телефон</label>
+              <input
+                class="field-i"
+                id="b-phone"
+                type="tel"
+                placeholder="+375 XX XXX XX XX"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-l">Количество игроков</label>
+            <select class="field-i" id="b-players" onchange="recalc()">
+              <option value="2">2 игрока</option>
+              <option value="3" selected>3 игрока</option>
+              <option value="4">4 игрока</option>
+              <option value="5">5 игроков (+25 BYN)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="s-label">🎫 Промо-код или QR</div>
+
+          <!-- API notice: replace URL -->
+          <div class="api-notice" id="api-notice">
+            ⚙️ <strong>Настройка:</strong> укажи URL своего Google Apps Script в
+            переменной <code>API_URL</code> в коде страницы.
+            <a
+              href="#"
+              onclick="
+                document.getElementById('api-notice').style.display = 'none';
+                return false;
+              "
+              >Скрыть</a
+            >
+          </div>
+
+          <!-- PROMO CODE -->
+          <label class="field-l">Введите промо-код</label>
+          <div class="promo-row">
+            <div class="field">
+              <input
+                class="field-i"
+                id="b-promo"
+                placeholder="Например HP2026"
+                oninput="onPromoInput()"
+                onkeydown="if (event.key === 'Enter') applyPromo();"
+              />
+            </div>
+            <button
+              class="btn btn-outline btn-sm"
+              onclick="applyPromo()"
+              id="btn-apply"
+            >
+              Применить
+            </button>
+          </div>
+          <div class="status-msg" id="promo-status"></div>
+
+          <div class="divider">или</div>
+
+          <!-- QR UPLOAD -->
+          <label class="field-l">Прикрепить QR из приглашения</label>
+          <div
+            class="qr-zone"
+            id="qr-zone"
+            onclick="document.getElementById('qr-file').click()"
+          >
+            <div class="qr-zone-icon">📷</div>
+            <div class="qr-zone-text">
+              Нажмите, чтобы загрузить QR из галереи
+            </div>
+            <div class="qr-zone-hint">
+              PNG, JPG · будет автоматически распознан
+            </div>
+            <input
+              type="file"
+              id="qr-file"
+              accept="image/*"
+              style="display: none"
+              onchange="handleQR(event)"
+            />
+          </div>
+
+          <div class="qr-success" id="qr-success">
+            <span style="font-size: 20px">✅</span>
+            <span class="qr-success-text" id="qr-success-text"
+              >QR распознан</span
+            >
+            <button class="qr-remove" onclick="removeQR()" title="Убрать">
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="price-block">
+            <div class="price-meta">
+              <span class="price-meta-label">Стоимость за команду</span>
+              <span class="price-discount-badge" id="price-badge"></span>
+            </div>
+            <div class="price-nums">
+              <div class="price-original" id="price-orig"></div>
+              <div class="price-final" id="price-final">175 BYN</div>
+            </div>
+          </div>
+
+          <button
+            class="btn btn-purple btn-full"
+            id="btn-book"
+            onclick="submitBooking()"
+          >
+            ✦ Перейти к бронированию
+          </button>
+        </div>
       </div>
 
-      <div class="qr-success" id="qr-success">
-        <span style="font-size:20px">✅</span>
-        <span class="qr-success-text" id="qr-success-text">QR распознан</span>
-        <button class="qr-remove" onclick="removeQR()" title="Убрать">✕</button>
+      <!-- ════════ TAB: INVITE GENERATOR ════════ -->
+      <div id="tab-invite" class="tab-pane">
+        <div class="invite-preview">
+          <div class="inv-eyebrow">Клаустрофобия · Минск</div>
+          <div class="inv-title">Гарри Поттер:<br />Секреты Дамблдора</div>
+          <div class="inv-sub">Пригласительный</div>
+
+          <div id="qr-display"><div id="qrcode"></div></div>
+
+          <div class="inv-code-box">
+            <div>
+              <div class="inv-code-label">Промо-код</div>
+              <div class="inv-code-val" id="inv-code-val">HP2026</div>
+            </div>
+          </div>
+          <br />
+          <div class="inv-discount" id="inv-discount-val">Скидка 15%</div>
+
+          <div class="inv-actions">
+            <button class="btn btn-gold btn-sm" onclick="downloadQR()">
+              ↓ Сохранить QR
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="copyCode()">
+              ⎘ Копировать код
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="shareInvite()">
+              ↗ Поделиться
+            </button>
+          </div>
+        </div>
+
+        <div class="gen-card">
+          <div class="s-label">⚙ Параметры приглашения</div>
+          <div class="grid2">
+            <div class="field">
+              <label class="field-l">Промо-код</label>
+              <input
+                class="field-i"
+                id="g-code"
+                value="HP2026"
+                maxlength="12"
+                oninput="refreshInvite()"
+              />
+            </div>
+            <div class="field">
+              <label class="field-l">Скидка</label>
+              <select
+                class="field-i"
+                id="g-discount"
+                onchange="refreshInvite()"
+              >
+                <option value="10">10%</option>
+                <option value="15" selected>15%</option>
+                <option value="20">20%</option>
+                <option value="25">25%</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-l">Действует до</label>
+              <input
+                class="field-i"
+                id="g-expiry"
+                type="date"
+                oninput="refreshInvite()"
+              />
+            </div>
+            <div class="field">
+              <label class="field-l">Кому (имя, необязательно)</label>
+              <input
+                class="field-i"
+                id="g-name"
+                placeholder="Александру"
+                oninput="refreshInvite()"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="price-block">
-        <div class="price-meta">
-          <span class="price-meta-label">Стоимость за команду</span>
-          <span class="price-discount-badge" id="price-badge"></span>
-        </div>
-        <div class="price-nums">
-          <div class="price-original" id="price-orig"></div>
-          <div class="price-final" id="price-final">175 BYN</div>
-        </div>
-      </div>
+    <div class="toast" id="toast"></div>
 
-      <button class="btn btn-purple btn-full" id="btn-book" onclick="submitBooking()">
-        ✦ Перейти к бронированию
-      </button>
-    </div>
-  </div>
+    <script>
+      // ════════════════════════════════════════════════════════
+      //  ⚙️  КОНФИГ — ЗАМЕНИ ЭТОТ URL на свой Apps Script URL
+      // ════════════════════════════════════════════════════════
+      const API_URL =
+        "https://script.google.com/macros/s/AKfycbyzq1N-pHtNbVZoEgC14AZGd2181UgaKDRrh68zut_Y295Gregf8fNvH_4a4J099oBw/exec";
+      // ════════════════════════════════════════════════════════
 
-  <!-- ════════ TAB: INVITE GENERATOR ════════ -->
-  <div id="tab-invite" class="tab-pane">
+      const BASE_PRICE = 175;
+      const EXTRA_5TH = 25;
 
-    <div class="invite-preview">
-      <div class="inv-eyebrow">Клаустрофобия · Минск</div>
-      <div class="inv-title">Гарри Поттер:<br>Секреты Дамблдора</div>
-      <div class="inv-sub">Пригласительный</div>
+      let activeDiscount = 0; // % скидки, 0 = нет
+      let qrInstance = null;
+      let applyTimer = null;
 
-      <div id="qr-display"><div id="qrcode"></div></div>
-
-      <div class="inv-code-box">
-        <div>
-          <div class="inv-code-label">Промо-код</div>
-          <div class="inv-code-val" id="inv-code-val">HP2026</div>
-        </div>
-      </div>
-      <br>
-      <div class="inv-discount" id="inv-discount-val">Скидка 15%</div>
-
-      <div class="inv-actions">
-        <button class="btn btn-gold btn-sm" onclick="downloadQR()">↓ Сохранить QR</button>
-        <button class="btn btn-outline btn-sm" onclick="copyCode()">⎘ Копировать код</button>
-        <button class="btn btn-outline btn-sm" onclick="shareInvite()">↗ Поделиться</button>
-      </div>
-    </div>
-
-    <div class="gen-card">
-      <div class="s-label">⚙ Параметры приглашения</div>
-      <div class="grid2">
-        <div class="field">
-          <label class="field-l">Промо-код</label>
-          <input class="field-i" id="g-code" value="HP2026" maxlength="12" oninput="refreshInvite()">
-        </div>
-        <div class="field">
-          <label class="field-l">Скидка</label>
-          <select class="field-i" id="g-discount" onchange="refreshInvite()">
-            <option value="10">10%</option>
-            <option value="15" selected>15%</option>
-            <option value="20">20%</option>
-            <option value="25">25%</option>
-          </select>
-        </div>
-        <div class="field">
-          <label class="field-l">Действует до</label>
-          <input class="field-i" id="g-expiry" type="date" oninput="refreshInvite()">
-        </div>
-        <div class="field">
-          <label class="field-l">Кому (имя, необязательно)</label>
-          <input class="field-i" id="g-name" placeholder="Александру" oninput="refreshInvite()">
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script>
-// ════════════════════════════════════════════════════════
-//  ⚙️  КОНФИГ — ЗАМЕНИ ЭТОТ URL на свой Apps Script URL
-// ════════════════════════════════════════════════════════
-const API_URL = 'https://script.google.com/macros/s/ТВОЙ_SCRIPT_ID/exec';
-// ════════════════════════════════════════════════════════
-
-const BASE_PRICE = 175;
-const EXTRA_5TH  = 25;
-
-let activeDiscount = 0;  // % скидки, 0 = нет
-let qrInstance    = null;
-let applyTimer    = null;
-
-// ── TABS ───────────────────────────────────────────────
-function switchTab(name, btn) {
-  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  btn.classList.add('active');
-}
-
-// ── PRICE ──────────────────────────────────────────────
-function recalc() {
-  const players = parseInt(document.getElementById('b-players').value);
-  const base = BASE_PRICE + (players === 5 ? EXTRA_5TH : 0);
-
-  if (activeDiscount > 0) {
-    const final = Math.round(base * (1 - activeDiscount / 100));
-    document.getElementById('price-orig').style.display  = 'block';
-    document.getElementById('price-orig').textContent    = base + ' BYN';
-    document.getElementById('price-final').textContent   = final + ' BYN';
-    document.getElementById('price-badge').style.display = 'block';
-    document.getElementById('price-badge').textContent   = '−' + activeDiscount + '% скидка';
-  } else {
-    document.getElementById('price-orig').style.display  = 'none';
-    document.getElementById('price-final').textContent   = base + ' BYN';
-    document.getElementById('price-badge').style.display = 'none';
-  }
-}
-
-// ── PROMO: INPUT ────────────────────────────────────────
-function onPromoInput() {
-  // Сбросить скидку при редактировании
-  if (activeDiscount > 0) {
-    activeDiscount = 0;
-    recalc();
-  }
-  setStatus('', '');
-}
-
-// ── PROMO: APPLY ────────────────────────────────────────
-async function applyPromo() {
-  const code = document.getElementById('b-promo').value.trim().toUpperCase();
-  if (!code) { setStatus('fail', 'Введите промо-код'); return; }
-
-  setStatus('loading', 'Проверяем код…');
-
-  try {
-    const res = await fetch(`${API_URL}?action=validate&code=${encodeURIComponent(code)}`);
-    const data = await res.json();
-
-    if (data.ok) {
-      activeDiscount = data.discount;
-      setStatus('ok', `✓ Код принят · скидка ${data.discount}%`);
-      recalc();
-      toast(`✓ Скидка ${data.discount}% применена`);
-    } else {
-      activeDiscount = 0;
-      setStatus('fail', `✕ ${data.error}`);
-      recalc();
-    }
-  } catch (e) {
-    // Если API не настроен — показываем понятное сообщение
-    activeDiscount = 0;
-    setStatus('fail', 'Не удалось подключиться к серверу. Проверьте API_URL.');
-    recalc();
-  }
-}
-
-function setStatus(type, msg) {
-  const el = document.getElementById('promo-status');
-  el.className = 'status-msg' + (type ? ' ' + type : '');
-  el.innerHTML = type === 'loading'
-    ? `<div class="spinner"></div>${msg}`
-    : msg;
-}
-
-// ── QR UPLOAD & DECODE ─────────────────────────────────
-function handleQR(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = ev => {
-    const img = new Image();
-    img.onload = () => {
-      const cv = document.createElement('canvas');
-      cv.width = img.width; cv.height = img.height;
-      const ctx = cv.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      const imageData = ctx.getImageData(0, 0, cv.width, cv.height);
-
-      const result = typeof jsQR === 'function'
-        ? jsQR(imageData.data, cv.width, cv.height)
-        : null;
-
-      if (result && result.data) {
-        parseQRData(result.data);
-      } else {
-        showQRSuccess('QR прикреплён · введите код вручную если нужна скидка');
+      // ── TABS ───────────────────────────────────────────────
+      function switchTab(name, btn) {
+        document
+          .querySelectorAll(".tab-pane")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        document.getElementById("tab-" + name).classList.add("active");
+        btn.classList.add("active");
       }
-    };
-    img.src = ev.target.result;
-  };
-  reader.readAsDataURL(file);
-}
 
-function parseQRData(raw) {
-  try {
-    const url = new URL(raw);
-    const code = url.searchParams.get('code');
-    if (code) {
-      document.getElementById('b-promo').value = code;
-      applyPromo();
-      showQRSuccess('QR распознан · применяем код…');
-    } else {
-      showQRSuccess('QR прикреплён · код не найден в QR');
-    }
-  } catch {
-    // Not a URL — maybe raw code
-    const trimmed = raw.trim().toUpperCase();
-    if (trimmed.length <= 12) {
-      document.getElementById('b-promo').value = trimmed;
-      applyPromo();
-      showQRSuccess('QR распознан · применяем код…');
-    } else {
-      showQRSuccess('QR прикреплён');
-    }
-  }
-}
+      // ── PRICE ──────────────────────────────────────────────
+      function recalc() {
+        const players = parseInt(document.getElementById("b-players").value);
+        const base = BASE_PRICE + (players === 5 ? EXTRA_5TH : 0);
 
-function showQRSuccess(msg) {
-  document.getElementById('qr-zone').style.display = 'none';
-  document.getElementById('qr-success').classList.add('show');
-  document.getElementById('qr-success-text').textContent = msg;
-}
+        if (activeDiscount > 0) {
+          const final = Math.round(base * (1 - activeDiscount / 100));
+          document.getElementById("price-orig").style.display = "block";
+          document.getElementById("price-orig").textContent = base + " BYN";
+          document.getElementById("price-final").textContent = final + " BYN";
+          document.getElementById("price-badge").style.display = "block";
+          document.getElementById("price-badge").textContent =
+            "−" + activeDiscount + "% скидка";
+        } else {
+          document.getElementById("price-orig").style.display = "none";
+          document.getElementById("price-final").textContent = base + " BYN";
+          document.getElementById("price-badge").style.display = "none";
+        }
+      }
 
-function removeQR() {
-  document.getElementById('qr-zone').style.display = 'block';
-  document.getElementById('qr-success').classList.remove('show');
-  document.getElementById('qr-file').value = '';
-  activeDiscount = 0;
-  setStatus('', '');
-  recalc();
-}
+      // ── PROMO: INPUT ────────────────────────────────────────
+      function onPromoInput() {
+        // Сбросить скидку при редактировании
+        if (activeDiscount > 0) {
+          activeDiscount = 0;
+          recalc();
+        }
+        setStatus("", "");
+      }
 
-// ── SUBMIT ─────────────────────────────────────────────
-async function submitBooking() {
-  const name    = document.getElementById('b-name').value.trim();
-  const phone   = document.getElementById('b-phone').value.trim();
-  const players = document.getElementById('b-players').value;
-  const code    = document.getElementById('b-promo').value.trim().toUpperCase();
+      // ── PROMO: APPLY ────────────────────────────────────────
+      async function applyPromo() {
+        const code = document
+          .getElementById("b-promo")
+          .value.trim()
+          .toUpperCase();
+        if (!code) {
+          setStatus("fail", "Введите промо-код");
+          return;
+        }
 
-  if (!name)  { toast('Введите имя'); return; }
-  if (!phone) { toast('Введите телефон'); return; }
+        setStatus("loading", "Проверяем код…");
 
-  // Mark code as used
-  if (code && activeDiscount > 0) {
-    const players_n = parseInt(players);
-    const base = BASE_PRICE + (players_n === 5 ? EXTRA_5TH : 0);
-    const finalPrice = Math.round(base * (1 - activeDiscount / 100));
+        try {
+          const res = await fetch(
+            `${API_URL}?action=validate&code=${encodeURIComponent(code)}`,
+          );
+          const data = await res.json();
 
-    try {
-      await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'use',
-          code,
-          booking: { name, phone, players, finalPrice }
-        })
+          if (data.ok) {
+            activeDiscount = data.discount;
+            setStatus("ok", `✓ Код принят · скидка ${data.discount}%`);
+            recalc();
+            toast(`✓ Скидка ${data.discount}% применена`);
+          } else {
+            activeDiscount = 0;
+            setStatus("fail", `✕ ${data.error}`);
+            recalc();
+          }
+        } catch (e) {
+          // Если API не настроен — показываем понятное сообщение
+          activeDiscount = 0;
+          setStatus(
+            "fail",
+            "Не удалось подключиться к серверу. Проверьте API_URL.",
+          );
+          recalc();
+        }
+      }
+
+      function setStatus(type, msg) {
+        const el = document.getElementById("promo-status");
+        el.className = "status-msg" + (type ? " " + type : "");
+        el.innerHTML =
+          type === "loading" ? `<div class="spinner"></div>${msg}` : msg;
+      }
+
+      // ── QR UPLOAD & DECODE ─────────────────────────────────
+      function handleQR(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const img = new Image();
+          img.onload = () => {
+            const cv = document.createElement("canvas");
+            cv.width = img.width;
+            cv.height = img.height;
+            const ctx = cv.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            const imageData = ctx.getImageData(0, 0, cv.width, cv.height);
+
+            const result =
+              typeof jsQR === "function"
+                ? jsQR(imageData.data, cv.width, cv.height)
+                : null;
+
+            if (result && result.data) {
+              parseQRData(result.data);
+            } else {
+              showQRSuccess(
+                "QR прикреплён · введите код вручную если нужна скидка",
+              );
+            }
+          };
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function parseQRData(raw) {
+        try {
+          const url = new URL(raw);
+          const code = url.searchParams.get("code");
+          if (code) {
+            document.getElementById("b-promo").value = code;
+            applyPromo();
+            showQRSuccess("QR распознан · применяем код…");
+          } else {
+            showQRSuccess("QR прикреплён · код не найден в QR");
+          }
+        } catch {
+          // Not a URL — maybe raw code
+          const trimmed = raw.trim().toUpperCase();
+          if (trimmed.length <= 12) {
+            document.getElementById("b-promo").value = trimmed;
+            applyPromo();
+            showQRSuccess("QR распознан · применяем код…");
+          } else {
+            showQRSuccess("QR прикреплён");
+          }
+        }
+      }
+
+      function showQRSuccess(msg) {
+        document.getElementById("qr-zone").style.display = "none";
+        document.getElementById("qr-success").classList.add("show");
+        document.getElementById("qr-success-text").textContent = msg;
+      }
+
+      function removeQR() {
+        document.getElementById("qr-zone").style.display = "block";
+        document.getElementById("qr-success").classList.remove("show");
+        document.getElementById("qr-file").value = "";
+        activeDiscount = 0;
+        setStatus("", "");
+        recalc();
+      }
+
+      // ── SUBMIT ─────────────────────────────────────────────
+      async function submitBooking() {
+        const name = document.getElementById("b-name").value.trim();
+        const phone = document.getElementById("b-phone").value.trim();
+        const players = document.getElementById("b-players").value;
+        const code = document
+          .getElementById("b-promo")
+          .value.trim()
+          .toUpperCase();
+
+        if (!name) {
+          toast("Введите имя");
+          return;
+        }
+        if (!phone) {
+          toast("Введите телефон");
+          return;
+        }
+
+        // Mark code as used
+        if (code && activeDiscount > 0) {
+          const players_n = parseInt(players);
+          const base = BASE_PRICE + (players_n === 5 ? EXTRA_5TH : 0);
+          const finalPrice = Math.round(base * (1 - activeDiscount / 100));
+
+          try {
+            await fetch(API_URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                action: "use",
+                code,
+                booking: { name, phone, players, finalPrice },
+              }),
+            });
+          } catch {
+            /* silent — don't block user */
+          }
+        }
+
+        toast("✓ Переходим к бронированию…");
+        setTimeout(() => {
+          window.location.href =
+            "https://minsk.claustrophobia.com/ru/quest/garri-potter-sekrety-dambldora/#main-tab-menu";
+        }, 900);
+      }
+
+      // ── INVITE GENERATOR ───────────────────────────────────
+      function getQRUrl() {
+        const code = (
+          document.getElementById("g-code").value.trim() || "HP2026"
+        ).toUpperCase();
+        const discount = document.getElementById("g-discount").value;
+        const expiry = document.getElementById("g-expiry").value;
+        const name = document.getElementById("g-name").value.trim();
+
+        const p = new URLSearchParams({ code, discount });
+        if (expiry) p.set("exp", expiry);
+        if (name) p.set("for", name);
+
+        return `https://minsk.claustrophobia.com/ru/quest/garri-potter-sekrety-dambldora/?${p}`;
+      }
+
+      function refreshInvite() {
+        const code = (
+          document.getElementById("g-code").value.trim() || "HP2026"
+        ).toUpperCase();
+        const discount = document.getElementById("g-discount").value;
+
+        document.getElementById("inv-code-val").textContent = code;
+        document.getElementById("inv-discount-val").textContent =
+          `Скидка ${discount}%`;
+
+        const el = document.getElementById("qrcode");
+        el.innerHTML = "";
+        qrInstance = new QRCode(el, {
+          text: getQRUrl(),
+          width: 176,
+          height: 176,
+          colorDark: "#1a1328",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
+      }
+
+      function downloadQR() {
+        setTimeout(() => {
+          const src =
+            document.querySelector("#qr-display canvas") ||
+            document.querySelector("#qr-display img");
+          if (!src) {
+            toast("QR ещё не готов");
+            return;
+          }
+
+          const size = 256,
+            pad = 18;
+          const cv = document.createElement("canvas");
+          cv.width = size;
+          cv.height = size;
+          const ctx = cv.getContext("2d");
+          ctx.fillStyle = "#fff";
+          ctx.fillRect(0, 0, size, size);
+          ctx.drawImage(src, pad, pad, size - pad * 2, size - pad * 2);
+
+          const a = document.createElement("a");
+          a.download = `claustrophobia-qr-${document.getElementById("g-code").value || "invite"}.png`;
+          a.href = cv.toDataURL("image/png");
+          a.click();
+          toast("✓ QR сохранён");
+        }, 80);
+      }
+
+      function copyCode() {
+        const code = document.getElementById("inv-code-val").textContent;
+        navigator.clipboard
+          .writeText(code)
+          .then(() => toast(`✓ Код «${code}» скопирован`))
+          .catch(() => toast(`Код: ${code}`));
+      }
+
+      function shareInvite() {
+        const code = document.getElementById("inv-code-val").textContent;
+        const discount =
+          document.getElementById("inv-discount-val").textContent;
+        const text = `🧙‍♂️ Приглашение на квест «Гарри Поттер: Секреты Дамблдора»\n${discount} по коду: ${code}\nБронируй: https://minsk.claustrophobia.com/ru/quest/garri-potter-sekrety-dambldora/`;
+
+        if (navigator.share) {
+          navigator.share({ text }).catch(() => {});
+        } else {
+          navigator.clipboard
+            .writeText(text)
+            .then(() => toast("✓ Текст приглашения скопирован"));
+        }
+      }
+
+      // ── TOAST ──────────────────────────────────────────────
+      let _toastTimer;
+      function toast(msg) {
+        const el = document.getElementById("toast");
+        el.textContent = msg;
+        el.classList.add("show");
+        clearTimeout(_toastTimer);
+        _toastTimer = setTimeout(() => el.classList.remove("show"), 2800);
+      }
+
+      // ── INIT ───────────────────────────────────────────────
+      window.addEventListener("load", () => {
+        // Default expiry: 3 months
+        const d = new Date();
+        d.setMonth(d.getMonth() + 3);
+        document.getElementById("g-expiry").value = d
+          .toISOString()
+          .slice(0, 10);
+
+        // Check URL params (если открыли по QR)
+        const params = new URLSearchParams(location.search);
+        const urlCode = params.get("code");
+        if (urlCode) {
+          document.getElementById("b-promo").value = urlCode;
+          switchTab("booking", document.querySelector(".tab-btn"));
+          setTimeout(applyPromo, 300);
+        }
+
+        refreshInvite();
+        recalc();
       });
-    } catch { /* silent — don't block user */ }
-  }
-
-  toast('✓ Переходим к бронированию…');
-  setTimeout(() => {
-    window.location.href = 'https://minsk.claustrophobia.com/ru/quest/garri-potter-sekrety-dambldora/#main-tab-menu';
-  }, 900);
-}
-
-// ── INVITE GENERATOR ───────────────────────────────────
-function getQRUrl() {
-  const code     = (document.getElementById('g-code').value.trim() || 'HP2026').toUpperCase();
-  const discount = document.getElementById('g-discount').value;
-  const expiry   = document.getElementById('g-expiry').value;
-  const name     = document.getElementById('g-name').value.trim();
-
-  const p = new URLSearchParams({ code, discount });
-  if (expiry) p.set('exp', expiry);
-  if (name)   p.set('for', name);
-
-  return `https://minsk.claustrophobia.com/ru/quest/garri-potter-sekrety-dambldora/?${p}`;
-}
-
-function refreshInvite() {
-  const code     = (document.getElementById('g-code').value.trim() || 'HP2026').toUpperCase();
-  const discount = document.getElementById('g-discount').value;
-
-  document.getElementById('inv-code-val').textContent    = code;
-  document.getElementById('inv-discount-val').textContent = `Скидка ${discount}%`;
-
-  const el = document.getElementById('qrcode');
-  el.innerHTML = '';
-  qrInstance = new QRCode(el, {
-    text: getQRUrl(),
-    width: 176, height: 176,
-    colorDark: '#1a1328', colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.H,
-  });
-}
-
-function downloadQR() {
-  setTimeout(() => {
-    const src = document.querySelector('#qr-display canvas') || document.querySelector('#qr-display img');
-    if (!src) { toast('QR ещё не готов'); return; }
-
-    const size = 256, pad = 18;
-    const cv = document.createElement('canvas');
-    cv.width = size; cv.height = size;
-    const ctx = cv.getContext('2d');
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, size, size);
-    ctx.drawImage(src, pad, pad, size - pad*2, size - pad*2);
-
-    const a = document.createElement('a');
-    a.download = `claustrophobia-qr-${document.getElementById('g-code').value || 'invite'}.png`;
-    a.href = cv.toDataURL('image/png');
-    a.click();
-    toast('✓ QR сохранён');
-  }, 80);
-}
-
-function copyCode() {
-  const code = document.getElementById('inv-code-val').textContent;
-  navigator.clipboard.writeText(code)
-    .then(() => toast(`✓ Код «${code}» скопирован`))
-    .catch(() => toast(`Код: ${code}`));
-}
-
-function shareInvite() {
-  const code     = document.getElementById('inv-code-val').textContent;
-  const discount = document.getElementById('inv-discount-val').textContent;
-  const text = `🧙‍♂️ Приглашение на квест «Гарри Поттер: Секреты Дамблдора»\n${discount} по коду: ${code}\nБронируй: https://minsk.claustrophobia.com/ru/quest/garri-potter-sekrety-dambldora/`;
-
-  if (navigator.share) {
-    navigator.share({ text }).catch(() => {});
-  } else {
-    navigator.clipboard.writeText(text).then(() => toast('✓ Текст приглашения скопирован'));
-  }
-}
-
-// ── TOAST ──────────────────────────────────────────────
-let _toastTimer;
-function toast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.classList.add('show');
-  clearTimeout(_toastTimer);
-  _toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
-}
-
-// ── INIT ───────────────────────────────────────────────
-window.addEventListener('load', () => {
-  // Default expiry: 3 months
-  const d = new Date();
-  d.setMonth(d.getMonth() + 3);
-  document.getElementById('g-expiry').value = d.toISOString().slice(0, 10);
-
-  // Check URL params (если открыли по QR)
-  const params = new URLSearchParams(location.search);
-  const urlCode = params.get('code');
-  if (urlCode) {
-    document.getElementById('b-promo').value = urlCode;
-    switchTab('booking', document.querySelector('.tab-btn'));
-    setTimeout(applyPromo, 300);
-  }
-
-  refreshInvite();
-  recalc();
-});
-</script>
-</body>
+    </script>
+  </body>
 </html>
